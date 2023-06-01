@@ -227,14 +227,14 @@ void ExitGame()
     int i,check=0;
     for(i=4; i<length; i++) //starts with 4 because it needs minimum 4 element to touch its own body
     {
-        if(body[0].x==body[i].x&&body[0].y==body[i].y)
+        if(body[0].x==body[i].x&&body[0].y==body[i].y)  //conditon matches coordinates to count strikes
         {
             check++;    //check's value increases as the coordinates of head is equal to any other body coordinate
         }
         if(i==length||check!=0)
             break;
     }
-    if(head.x<=10||head.x>=70||head.y<=10||head.y>=30||check!=0)
+    if(head.x<=10||head.x>=70||head.y<=10||head.y>=30||check!=0) // condition where you lose life
     {
         life--;
         if(life>=0)
@@ -363,9 +363,7 @@ void Bend()
             if(diff<0)
                 for(j=1; j<=(-diff)&&len<length; j++)
                 {
-                    /*GotoXY((bend[i].x+j),bend[i].y);
-                    printf("*");*/
-                    body[len].x=bend[i].x+j;
+                     body[len].x=bend[i].x+j;
                     body[len].y=bend[i].y;
                     GotoXY(body[len].x,body[len].y);
                     printf("*");
@@ -376,8 +374,6 @@ void Bend()
             else if(diff>0)
                 for(j=1; j<=diff&&len<length; j++)
                 {
-                    /*GotoXY((bend[i].x-j),bend[i].y);
-                    printf("*");*/
                     body[len].x=bend[i].x-j;
                     body[len].y=bend[i].y;
                     GotoXY(body[len].x,body[len].y);
@@ -389,7 +385,7 @@ void Bend()
         }
     }
 }
-void Boarder()
+void Boarder() // we have used gotoxy() for border but we can also use a nested forloop to creat the same effect.
 {
     system("cls");
     int i;
@@ -426,12 +422,12 @@ void Print()
 int Score()
 {
     int score;
-    GotoXY(20,8);
+    GotoXY(20,8); //score corner coordinates
     score=length-5;
     printf("SCORE : %d",(length-5));
     score=length-5;
     GotoXY(50,8);
-    printf("Life : %d",life);
+    printf("Life : %d",life); //lives corner coordinates
     return score;
 }
 
