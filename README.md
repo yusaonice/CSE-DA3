@@ -23,7 +23,7 @@ Makes up majority of the driver code. It is a do-while loop. It also initialises
 The function also has the condition to stop the game once the player presses ‘esc’
 6.	Left(),Right(),Up(),Down()=
 To move the snake, the program uses the arrow keys. The use of each key has a specific function designated to them. The function, dictates the length of the snake , the speed of the snake (Hence the use of Delay()) and the position of the head of the snake.
-For example if we call function Up()= the function will iterate through the current length of the snake, it will give head[0]==’^’ and the rest of the snake’s body as ‘*’. That is how we see the snake in motion.
+For example if we call function Up()= the function will iterate through the current length of the snake, it will give head[0]==’^’ and the rest of the snake’s body as ‘*’ until the loop reaches the snake's current length That is how we see the snake in motion.
 The rest of the directions work in the same way
 9.Food(); this function uses the rand() to generate food at random coordinates within boundary. The condition is set as, if the x and y coordinates of the head match the coordinates of the food; then the length of the snake increases , and so does its speed.
 The function then generates another food item at random location
@@ -38,3 +38,4 @@ Points I wish to explain
 1.	We have created a structure named coordinates. Almost every function used in the program uses coordinates so that we can apply it to the game.
 2.	This is extremely helpful in the directions of left(),right(),up(),down().
 The functions match the coordinates of the snake’s head and food’s coordinate to increase the score.
+3. The exitgame function will take in to account if the snake touches its own body by matching the coordinates of the head and of the body, if so we lose 1 life. This is consequently reflected in our lives corner.
